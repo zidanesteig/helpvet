@@ -3,15 +3,21 @@
 use \zidanesteig\PageCliente;
 use \zidanesteig\Model\User;
 use \zidanesteig\Model\Address;
+use \zidanesteig\Model\Product;
+use \zidanesteig\Model\Category;
 
 
 $app->get('/login_cliente', function() {
 
 	User::verifyLogin(false);
 
+	$products = Product::listAll();
+
 	$page = new zidanesteig\PageCliente();
 
-	$page->setTpl("index");
+	$page->setTpl("index",[
+	'products'=>Product::checkList($products)
+	]);
 
 });
 
@@ -54,37 +60,19 @@ exit;
 });
 
 $app->get("/login_cliente/profile", function(){
-	$user = User::getFromSession();
-	User::verifyLogin(false);
-	$address = new Address();
+		$user = User::getFromSession();
+		User::verifyLogin(false);
+		$page = new PageCliente();
+		$page->setTpl("profile", [
+			'user'=>$user->getValues(),
+			'profileMsg'=>User::getSuccess(),
+			'profileError'=>User::getError()
+		]);
+	});
 
-	if (isset($_GET['zipcode'])) {
-
-		$address->loadFromCEP($_GET['zipcode']);
-		$user->setdeszipcode($_GET['zipcode']);
-	  $user->save();
-	}
-	if (!$address->getdesaddress()) $address->setdesaddress('');
-	if (!$address->getdesnumber()) $address->setdesnumber('');
-	if (!$address->getdescomplement()) $address->setdescomplement('');
-	if (!$address->getdesdistrict()) $address->setdesdistrict('');
-	if (!$address->getdescity()) $address->setdescity('');
-	if (!$address->getdesstate()) $address->setdesstate('');
-	if (!$address->getdescountry()) $address->setdescountry('');
-	if (!$address->getdeszipcode()) $address->setdeszipcode('');
-
-	$page = new zidanesteig\PageCliente(['header'=>false]);
-	$page->setTpl("profile", [
-		'user'=>$user->getValues(),
-		'profileMsg'=>User::getSuccess(),
-		'profileError'=>User::getError()
-	]);
-});
-
-$app->post("/login_cliente/profile", function(){
+$app->post("/login_cliente/login_cliente/profile", function(){
 
 	User::verifyLogin(false);
-
 	if(!isset($_POST['desperson']) || $_POST['desperson'] === '') {
 		User::setError("Preencha o seu nome.");
 		header('Location: /login_cliente/profile');
@@ -105,7 +93,6 @@ $app->post("/login_cliente/profile", function(){
 				exit;
 			}
 	}
-
 	$_POST['inadmin'] = $user->getinadmin();
 	$_POST['despassword'] = $user->getdespassword();
 	$_POST['deslogin'] = $_POST['desemail'];
@@ -114,9 +101,7 @@ $app->post("/login_cliente/profile", function(){
 	$user->save();
 	$_SESSION[User::SESSION] = $user->getValues();
 	User::setSuccess("Dados alterados com sucesso.");
-
-	header("location: /login_cliente/profile");
+	header('Location: /login_cliente/profile');
 	exit;
-
 });
 ?>
