@@ -2,8 +2,8 @@
 session_start();
 require_once("vendor/autoload.php");
 
+
 use \Slim\Slim;
-use \zidanesteig\Page;
 
 $app = new Slim();
 
@@ -15,28 +15,9 @@ require_once("admin-users.php");
 require_once("admin-categories.php");
 require_once("admin-products.php");
 require_once("admin-orders.php");
+require_once("cliente.php");
+require_once("site.php");
 
-$app->get('/', function() {
-
-  $page = new Page();
-  $page->setTpl("index");
-
-});
-
-$app->get("/veterinario", function(){
-	$page = new Page();
-	$page->setTpl("veterinario");
-});
-
-$app->get("/cliente", function(){
-	$page = new Page();
-	$page->setTpl("cliente");
-});
-
-$app->get("/sobre", function(){
-	$page = new Page();
-	$page->setTpl("sobre");
-});
 
 $app->run();
 

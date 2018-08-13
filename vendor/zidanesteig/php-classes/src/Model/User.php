@@ -105,7 +105,7 @@ class User extends Model {
 			if ($inadmin) {
 				header("Location: /admin/login");
 			} else {
-				header("Location: /login");
+				header("Location: /login_cliente/login");
 			}
 			exit;
 
@@ -218,11 +218,11 @@ class User extends Model {
 	             $code = openssl_encrypt($dataRecovery['idrecovery'], 'aes-256-cbc', User::SECRET, 0, $iv);
 	             $result = base64_encode($iv.$code);
 	             if ($inadmin === true) {
-	                 $link = "http://www.helpvet.com/admin/forgot/reset?code=$result";
+	                 $link = "http://www.teste.com/admin/forgot/reset?code=$result";
 	             } else {
-	                 $link = "http://www.helpvet.com/forgot/reset?code=$result";
+	                 $link = "http://www.teste.com/forgot/reset?code=$result";
 	             }
-	             $mailer = new Mailer($data['desemail'], $data['desperson'], "Redefinir senha da zidanesteig Store", "forgot", array(
+	             $mailer = new Mailer($data['desemail'], $data['desperson'], "Redefinir senha HelpVet", "forgot", array(
 	                 "name"=>$data['desperson'],
 	                 "link"=>$link
 	             ));

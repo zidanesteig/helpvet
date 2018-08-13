@@ -1,0 +1,87 @@
+{if="$profileMsg != ''"}
+<div class="alert alert-success">
+    {$profileMsg}
+</div>
+{/if}
+{if="$profileError != ''"}
+<div class="alert alert-danger">
+    {$profileError}
+</div>
+{/if}
+  <main class="mdc-toolbar-fixed-adjust"  style="background-color:#fff">
+      <section class="mdc-tab-bar">
+        <form name="cadanimal" action="/login_cliente/profile" method="post">
+          <br>
+          <br>
+          <br>
+          <br>
+          <input type="hidden" name="usuario_id" value="<?php print $usuarios['usuario_id']; ?>">
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="sample1" name="desperson" value="{$user.desperson}">
+            <label class="mdl-textfield__label" for="sample1">Nome Completo</label>
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="sample2" name="nrphone" value="{$user.nrphone}">
+            <label class="mdl-textfield__label" for="sample2">Telefone</label>
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="email" id="sample3" name="desemail" value="{$user.desemail}">
+          <label class="mdl-textfield__label" for="sample3">E-mail</label>
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input type="text" value="{$user.deszipcode}" placeholder="00000-000" id="billing_cep_1" name="zipcode" class="mdl-textfield__input">
+            <label class="mdl-textfield__label" for="billing_cep_1">Cep <abbr title="required" class="required">*</abbr></label>
+            <input type="submit" value="Atualizar CEP" id="place_order" class="button alt" formaction="/login_cliente/profile" formmethod="get">
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield">
+              <label class="mdl-textfield__label" for="billing_address_1">Endereço <abbr title="required" class="required">*</abbr>
+              </label>
+              <input type="text" value="{$user.desaddress}" placeholder="Logradouro, número e bairro" id="billing_address_1" name="desaddress" class="mdl-textfield__input">
+          </div>
+          <br>
+          <div class="mdl-textfield mdl-js-textfield">
+              <label class="mdl-textfield__label" for="billing_number_1">Número <abbr title="required" class="required">*</abbr>
+              </label>
+              <input type="text" value="{$user.desnumber}" placeholder="Número" id="billing_address_1" name="desnumber" class="mdl-textfield__input">
+          </div>
+        <div class="mdl-textfield mdl-js-textfield">
+            <input type="text" value="{$user.descomplement}" placeholder="Complemento (opcional)" id="billing_address_2" name="descomplement" class="mdl-textfield__input">
+            <label class="mdl-textfield__label" for="billing_address_2">Número </label>
+              </div>
+            <div class="mdl-textfield mdl-js-textfield">
+            <label class="mdl-textfield__label" for="billing_district">Bairro <abbr title="required" class="required">*</abbr>
+            </label>
+            <input type="text" value="{$user.desdistrict}" placeholder="Cidade" id="billing_district" name="desdistrict" class="mdl-textfield__input">
+          </div>
+            <div class="mdl-textfield mdl-js-textfield">
+            <label class="mdl-textfield__label" for="billing_city">Cidade <abbr title="required" class="required">*</abbr>
+            </label>
+            <input type="text" value="{$user.descity}" placeholder="Cidade" id="billing_city" name="descity" class="mdl-textfield__input">
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield">
+            <label class="mdl-textfield__label" for="billing_state">Estado</label>
+            <input type="text" id="billing_state" name="desstate" placeholder="Estado" value="{$user.desstate}" class="mdl-textfield__input">
+          </div>
+          <div class="mdl-textfield mdl-js-textfield">
+            <label class="mdl-textfield__label" for="billing_state">País</label>
+            <input type="text" id="billing_state" name="descountry" placeholder="País" value="{$user.descountry}" class="mdl-textfield__input">
+          </div>
+          <br>
+          <br>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+            Gravar
+          </button>
+        </form>
+      </section>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </main>

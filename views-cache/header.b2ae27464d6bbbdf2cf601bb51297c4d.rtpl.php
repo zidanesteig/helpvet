@@ -1,0 +1,99 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><!doctype html>
+
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Veterinário em poucos clicks.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>HelpVet</title>
+
+    <!-- Page styles -->
+    <link rel="shortcut icon" href="/views/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+    <link rel="stylesheet" href="/views/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <style>
+    #view-source {
+      position: fixed;
+      display: flex;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    a:link
+    {
+    text-decoration:none;
+    }
+    .img-responsive {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    }
+
+    </style>
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+      <div class="android-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+          <span class="android-title mdl-layout-title">
+            <img class="img-responsive" src="views/images/HelpVet (10) (1).png">
+          </span>
+          <!-- Add spacer, to align navigation to the right in desktop -->
+          <div class="android-header-spacer mdl-layout-spacer"></div>
+          <div class="android-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search-field">
+              <i class="material-icons">search</i>
+            </label>
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search-field">
+            </div>
+          </div>
+          <!-- Navigation -->
+          <div class="android-navigation-container">
+            <nav class="android-navigation mdl-navigation">
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/">Home</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/cliente">Cliente</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/veterinario">Veterinário</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/sobre">Sobre</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="mailto:contato@helpvet.com.br">Contato</a>
+            </nav>
+          </div>
+          <span class="android-mobile-title mdl-layout-title">
+            <img class="android-logo-image" src="views/images/android-logo.jpeg">
+          </span>
+          <button class="android-more-button mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+            <li class="mdl-list__item"><i class="material-icons">account_circle</i><a  href="/login_cliente"> Cliente</a></li>
+            <li class="mdl-list__item"><i class="material-icons">pets</i><a  href="/login_vet"> Veterinário</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="android-drawer mdl-layout__drawer">
+        <span class="mdl-layout-title">
+          <img class="android-logo-image" src="views/images/android-logo-white.png">
+        </span>
+        <nav class="mdl-navigation" style="background: #fff;">
+          <a class="mdl-navigation__link" href="/">Home</a>
+          <a class="mdl-navigation__link" href="/cliente">Cliente</a>
+          <a class="mdl-navigation__link" href="/veterinario">Veterinário</a>
+          <a class="mdl-navigation__link" href="/sobre">Sobre</a>
+          <a class="mdl-navigation__link" href="mailto:contato@helpvet.com.br">Contato</a>
+          <div class="android-drawer-separator"></div>
+          <span class="mdl-navigation__link" href="">Acesso</span>
+          <a class="mdl-navigation__link" href="/login_cliente">Cliente</a>
+          <a class="mdl-navigation__link" href="/login_vet">Veterinário</a>
+          <div class="android-drawer-separator"></div>
+        </nav>
+      </div>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login | Registrar</title>
+    <link rel="shortcut icon" href="favicon.png">
+    <script src="//static.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.brown-purple.min.css" />
+    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    a:link
+    {
+    text-decoration:none;
+    }
+    .img-responsive {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    }
+    body
+    {
+    	background: #f5f5f5;
+    }
+
+    h5
+    {
+    	font-weight: 400;
+    }
+
+    .tabs .indicator
+    {
+    	background-color: #e0f2f1;
+    	height: 60px;
+    	opacity: 0.3;
+    }
+
+    .form-container
+    {
+    	padding: 40px;
+    	padding-top: 10px;
+    }
+
+    .confirmation-tabs-btn
+    {
+    	position: absolute;
+    }
+    </style>
+  </head>
+  <body style="min-height:0%; text-align: center;">
+    <div class="container white z-depth-2">
+	<ul class="tabs teal">
+		<li class="tab col s3"><a class="white-text active" href="#login">Entrar</a></li>
+		<li class="tab col s3"><a class="white-text" href="#register">Registrar</a></li>
+	</ul>
+    	<div id="login" class="col s12">
+    		<form class="col s12" name="entrar" action="/login_cliente/login" method="post">
+    			<div class="form-container">
+    				<h3 class="teal-text">Veterinário</h3>
+            <br>
+    				<div class="row">
+    					<div class="input-field col s12">
+    						<input id="user" type="email" name="login" class="validate">
+    						<label for="user">E-mail</label>
+    					</div>
+    				</div>
+    				<div class="row">
+    					<div class="input-field col s12">
+    						<input id="password" type="password" name="senha" class="validate">
+    						<label for="password">Senha</label>
+    					</div>
+    				</div>
+    				<br>
+    				<center>
+    					<button class="btn waves-effect waves-light teal" type="submit" name="action">Entrar</button>
+    					<br>
+    					<br>
+    					<a class="xxt" href="">Perdeu a senha?</a>
+              <br>
+              <br>
+              <a class="voltar" href="http://helpvet.com.br">Voltar</a>
+
+              </style>
+    				</center>
+    			</div>
+    		</form>
+    	</div>
+    	<div id="register" class="col s12">
+    		<form class="col s12" action="" method="POST" onSubmit="return valida_campos();">
+    			<div class="form-container">
+    				<h3 class="teal-text">Bem-vindo</h3>
+            <br>
+    				<div class="row">
+    					<div class="input-field col s6">
+    						<input id="nome" name="nome" type="text">
+    						<label for="nome">Nome</label>
+    					</div>
+    					<div class="input-field col s6">
+    						<input id="sobrenome" name="sobrenome" type="text">
+    						<label for="sobrenome">Sobrenome</label>
+    					</div>
+    				</div>
+            <div class="row">
+    					<div class="input-field col s12">
+    						<input id="endereco" name="endereco" type="text">
+    						<label for="endereco">Endereço</label>
+    					</div>
+    				</div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="telefone" name="telefone" type="text">
+                <label for="telefone">Telefone para contato</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="cpf" name="cpf" type="text">
+                <label for="cpf">CPF</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="crmv" name="crmv" type="text">
+                <label for="crmv">CRMV</label>
+              </div>
+            </div>
+    				<div class="row">
+    					<div class="input-field col s12">
+    						<input id="email" name="email" type="email">
+    						<label for="email">E-mail</label>
+    					</div>
+    				</div>
+    				<div class="row">
+    					<div class="input-field col s12">
+    						<input id="email-confirm" type="email" name="email-confirm">
+    						<label for="email-confirm">Confirmação de E-mail</label>
+    					</div>
+    				</div>
+    				<div class="row">
+    					<div class="input-field col s12">
+    						<input id="senha" name="senha" type="password">
+    						<label for="senha">Senha</label>
+    					</div>
+    				</div>
+    				<div class="row">
+    					<div class="input-field col s12">
+    						<input id="repetir_senha" name="repetir_senha" type="password">
+    						<label for="repetir_senha">Repetir Senha</label>
+    					</div>
+    				</div>
+    				<center>
+    					<button class="btn waves-effect waves-light teal" type="submit" name="BTEnvia" value="ENVIAR">Cadastrar</button>
+    				</center>
+    			</div>
+    		</form>
+    	</div>
+    </div>
+    <br>
+    <br>
+    <script type="text/javascript">
+function valida_campos()
+{
+  if(document.getElementById('nome').value == '')
+    {
+      alert('Nome é um campo obrigatório.');
+      document.getElementById('nome').focus();
+      return false;
+    }
+    if(document.getElementById('sobrenome').value == '')
+      {
+        alert('sobrenome é um campo obrigatório.');
+        document.getElementById('sobrenome').focus();
+        return false;
+      }
+      if(document.getElementById('telefone').value == '')
+        {
+          alert('telefone é um campo obrigatório.');
+          document.getElementById('telefone').focus();
+          return false;
+        }
+        if(document.getElementById('cpf').value == '')
+          {
+            alert('CPF é um campo obrigatório.');
+            document.getElementById('cpf').focus();
+            return false;
+          }
+          if(document.getElementById('crmv').value == '')
+            {
+              alert('CRMV é um campo obrigatório.');
+              document.getElementById('crmv').focus();
+              return false;
+            }
+  if(document.getElementById('email').value == '')
+    {
+      alert('E-mail é um campo obrigatório.');
+      document.getElementById('email').focus();
+      return false;
+    }
+    if(document.getElementById('email').value == '' || document.getElementById('email').value != document.getElementById('email-confirm').value)
+      {
+        alert('Email-s não conferem, por favor, redigite.');
+        document.getElementById('email').focus();
+        return false;
+      }
+  if(document.getElementById('senha').value == '' || document.getElementById('senha').value != document.getElementById('repetir_senha').value)
+    {
+      alert('As senhas não conferem, por favor, redigite.');
+      document.getElementById('senha').focus();
+      return false;
+    }
+}
+</script>
+    <footer class="mdl-mini-footer">
+      <div class="mdl-mini-footer__left-section" style="padding:12px;">
+        <div class="mdl-logo">HelpVet &copy 2018</div>
+        <ul class="mdl-mini-footer__link-list">
+          <li><a href="#">Ajuda</a></li>
+          <li><a href="#">Termos e Privacidade</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js"></script>
+  <script>mdc.autoInit()</script>
+</html>
